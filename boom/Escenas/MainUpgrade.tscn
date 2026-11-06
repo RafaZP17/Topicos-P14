@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dbb07upxquj63"]
+
+[ext_resource type="Script" uid="uid://ceb5nn2rtgww8" path="res://Escenas/Scripts/Player.cs" id="1_2pqce"]
+[ext_resource type="Texture2D" uid="uid://bqd47hmstst8p" path="res://Assets/escop_temp.png" id="2_ky7m0"]
+[ext_resource type="PackedScene" uid="uid://kjckh3ewe2hn" path="res://Escenas/Enemy.tscn" id="3_4ufvj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6dgv"]
+
+[node name="Node3D" type="Node3D" unique_id=320250146]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=201461313]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=556178865]
+flip_faces = true
+size = Vector3(50, 10, 50)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=377442705 groups=["Player"]]
+script = ExtResource("1_2pqce")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1307532666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_l6dgv")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=2070824972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D" unique_id=63239813]
+target_position = Vector3(0, -1, -50)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera3D" unique_id=1134612131]
+
+[node name="ColorRect" type="ColorRect" parent="Player/Camera3D/CanvasLayer" unique_id=258308154]
+offset_left = 575.0
+offset_top = 328.0
+offset_right = 584.0
+offset_bottom = 337.0
+color = Color(0.26358673, 0.9658405, 0.663526, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Player/Camera3D/CanvasLayer" unique_id=124156997]
+offset_left = 166.0
+offset_top = 245.0
+offset_right = 743.0
+offset_bottom = 650.0
+texture = ExtResource("2_ky7m0")
+
+[node name="Node3D" parent="." unique_id=1832256581 instance=ExtResource("3_4ufvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8271589, -0.9999993, -8.393923)
+
+[node name="Node3D2" parent="." unique_id=1623115590 instance=ExtResource("3_4ufvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.216259, -1, -5.966401)

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://kjckh3ewe2hn"]
+
+[ext_resource type="Script" uid="uid://c8bm3qv81us30" path="res://Escenas/Scripts/Enemy.cs" id="1_pe06u"]
+[ext_resource type="Texture2D" uid="uid://l8mpbf6s2ywx" path="res://Assets/enemy1.png" id="1_y3j3y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6dgv"]
+radius = 1.6254883
+height = 3.2509766
+
+[node name="Node3D" type="Node3D" unique_id=1832256581]
+
+[node name="Enemy" type="CharacterBody3D" parent="." unique_id=1025597851 groups=["Enemy"]]
+script = ExtResource("1_pe06u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy" unique_id=109490683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0666504, 0)
+shape = SubResource("CapsuleShape3D_l6dgv")
+
+[node name="Sprite3D" type="Sprite3D" parent="Enemy" unique_id=1399847977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+texture = ExtResource("1_y3j3y")
